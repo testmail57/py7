@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+    button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+<button onclick="myFunction()"></button>
+
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+var htmlCode = `
+7)Distribution Plot:
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris = sns.load_dataset("iris")
+sns.distplot(iris["sepal_length"],bins=10,kde=True)
+plt.title("Distribution Plot of Sepal Length")
+plt.xlabel("SepalLength(cm)")
+plt.ylabel("Density")
+plt.show() 
+
+ 
+ 
+Joint Plot:
+import seaborn as sns
+import matplotlib.pyplot as plt
+iris = sns.load_dataset("iris")
+sns.jointplot(x="sepal_length",y="sepal_width",data=iris,kind="reg")
+plt.show() 
+
+
+
+Box Plot:
+import seaborn as sns
+import matplotlib.pyplot as plt
+tips = sns.load_dataset("tips")
+sns.boxplot(x="day", y="total_bill", data=tips)
+plt.title("Box Plot: Distribution of Total Bill Amount by Day")
+plt.xlabel("Day of the Week")
+plt.ylabel("TotalBillAmount($)")
+plt.show()
+
+
+Palettes:
+import seaborn as sns
+import matplotlib.pyplot as plt
+data = sns.load_dataset("tips")
+sns.set_palette("husl")
+sns.barplot(x="day",y="total_bill",data=data,ci=None)
+plt.title("Customized Bar Plot with Color Palette")
+plt.xlabel("Day of the Week")
+plt.ylabel("TotalBillAmount($)")
+plt.show() 
+
+
+
+Styling Bar Plot:
+import seaborn as sns import matplotlib.pyplot as plt
+data = sns.load_dataset("tips")
+sns.set_palette("pastel")
+sns.barplot(x="day",y="total_bill",data=data,ci=None)
+plt.title("Customized Bar Plot with Color Palette")
+plt.xlabel("Day of the Week")
+plt.ylabel("TotalBillAmount($)")
+plt.show()
+
+
+
+`
+
+document.getElementById("myInput").value = htmlCode;
+
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value.replace(/&lt;/g, '<'));
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
